@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Just Fill the Blanks 💖</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #fff0f5, #ffe6eb);
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      padding-top: 60px;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 44px;
+      color: #d6336c;
+    }
+
+    p {
+      font-size: 18px;
+      color: #444;
+      margin-bottom: 30px;
+    }
+
+    .question {
+      margin: 18px 0;
+      font-size: 18px;
+    }
+
+    input {
+      padding: 10px;
+      width: 220px;
+      font-size: 16px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      text-align: center;
+      margin-top: 6px;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 12px 30px;
+      font-size: 16px;
+      background-color: #ff4d6d;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #e63956;
+    }
+
+    #error {
+      margin-top: 20px;
+      color: #c9184a;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      color: #ff4d6d;
+      animation: floatUp 5s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% { bottom: 0; opacity: 1; }
+      100% { bottom: 100%; opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Just fill the blanks… 💭</h1>
+  <p>No thinking too much. Just what your heart says.</p>
+
+  <form action="https://docs.google.com/forms/d/e/1FAIpQLSds4hLtjntR4SkyTFcUlBndf1fCqa6MZDmUxPxH-EeerPCeYA/formResponse"
+        method="POST"
+        target="hidden_iframe"
+        onsubmit="return validateForm();">
+
+    <div class="question">
+      You are my ____ <br>
+      <input type="text" name="entry.618455428" id="q1">
+    </div>
+
+    <div class="question">
+      With you, I feel ____ <br>
+      <input type="text" name="entry.413121721" id="q2">
+    </div>
+
+    <div class="question">
+      We are ____ <br>
+      <input type="text" name="entry.1668958303" id="q3">
+    </div>
+
+    <div class="question">
+      Our future will be ____ <br>
+      <input type="text" name="entry.1964050152" id="q4">
+    </div>
+
+    <button type="submit">Continue 💌</button>
+    <div id="error"></div>
+  </form>
+
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
+
+  <script>
+    function validateForm() {
+      const a1 = q1.value.trim();
+      const a2 = q2.value.trim();
+      const a3 = q3.value.trim();
+      const a4 = q4.value.trim();
+
+      if (!a1 || !a2 || !a3 || !a4) {
+        document.getElementById("error").innerHTML =
+          "Please fill all the blanks 💕";
+        return false;
+      }
+
+      createHearts();
+
+      setTimeout(() => {
+        window.location.href = "final.html";
+      }, 3000);
+
+      return true;
+    }
+
+    function createHearts() {
+      for (let i = 0; i < 25; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 5000);
+      }
+    }
+  </script>
+
+</body>
+</html>
+
