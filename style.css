@@ -1,7 +1,5 @@
-/* ===== Body Styling ===== */
 body {
   margin: 0;
-  min-height: 100vh; /* better than height: 100vh for mobile */
   background: linear-gradient(135deg, #ffdde1, #ee9ca7);
   display: flex;
   justify-content: center;
@@ -9,33 +7,28 @@ body {
   font-family: Arial, sans-serif;
   padding: 20px;
   box-sizing: border-box;
+  min-height: 100vh; /* important */
 }
 
-/* ===== Card Design ===== */
 .card {
   background: white;
   width: 350px;
-  max-width: 100%;
+  max-width: 100%;   /* important for phone */
   padding: 40px;
   border-radius: 18px;
   text-align: center;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
-/* ===== Headings ===== */
 h1 {
   color: #e63946;
-  margin-bottom: 15px;
 }
 
-/* ===== Paragraph ===== */
 p {
   color: #444;
   line-height: 1.6;
-  margin-bottom: 15px;
 }
 
-/* ===== Button ===== */
 .btn {
   display: inline-block;
   margin-top: 25px;
@@ -44,36 +37,11 @@ p {
   color: white;
   text-decoration: none;
   border-radius: 25px;
-  transition: 0.3s ease;
 }
 
-.btn:hover {
-  background: #d62839;
-}
-
-/* ===== Mobile Responsive ===== */
+/* Mobile fix */
 @media (max-width: 768px) {
-
-  body {
-    padding: 15px;
-  }
-
   .card {
-    width: 100%;
     padding: 25px;
   }
-
-  h1 {
-    font-size: 22px;
-  }
-
-  p {
-    font-size: 15px;
-  }
-
-  .btn {
-    padding: 8px 18px;
-    font-size: 14px;
-  }
-
 }
