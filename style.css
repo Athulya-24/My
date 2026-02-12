@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  box-sizing: border-box;
+  min-height: 100vh; /* important */
+}
+
+.card {
+  background: white;
+  width: 350px;
+  max-width: 100%;   /* important for phone */
+  padding: 40px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+  color: #e63946;
+}
+
+p {
+  color: #444;
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 10px 22px;
+  background: #e63946;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+}
+
+/* Mobile fix */
+@media (max-width: 768px) {
+  .card {
+    padding: 25px;
+  }
+}
+/* ---------- Mobile-only improvements ---------- */
+@media (max-width: 600px) {
+
+  body {
+    padding: 15px;
+    align-items: flex-start; /* prevents too much vertical center space */
+  }
+
+  .card {
+    width: 100%;
+    padding: 22px;
+    margin-top: 30px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 8px 18px;
+  }
+}
