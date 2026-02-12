@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+
+  <title>For You ❤️</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins&display=swap" rel="stylesheet">
+
+  <style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom right, #ffe6eb, #fff0f5);
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .container {
+    max-width: 400px;
+    width: 100%;
+  }
+
+  h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 42px;
+    color: #d6336c;
+    margin-bottom: 15px;
+  }
+
+  p {
+    font-size: 17px;
+    color: #444;
+    line-height: 1.6;
+  }
+
+  input {
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 250px;
+  }
+
+  button {
+    margin-top: 15px;
+    padding: 10px 22px;
+    font-size: 16px;
+    background-color: #ff4d6d;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #e63956;
+  }
+
+  #message {
+    margin-top: 25px;
+    font-size: 20px;
+    color: #c9184a;
+  }
+
+  .marquee {
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin-top: 15px;
+  }
+
+  .marquee span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 6s linear infinite;
+    font-size: 28px;
+  }
+
+  @keyframes marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+
+  .heart {
+    position: fixed;
+    bottom: 0;
+    color: #ff4d6d;
+    font-size: 20px;
+    animation: floatUp 4s linear infinite;
+  }
+
+  @keyframes floatUp {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100vh);
+      opacity: 0;
+    }
+  }
+
+  /* Mobile adjustment */
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 34px;
+    }
+
+    p {
+      font-size: 15px;
+    }
+  }
+</style>
+
+</head>
+
+<body>
+  
+  <div class="container">
+
+  <h1>Hey You ❤️</h1>
+
+  <p>
+    Out of all the moments in my life,  
+    one date changed everything.
+  </p>
+
+  <p><b>Do you remember the day You said “I love you”?</b></p>
+
+<div style="margin-top:15px;">
+  <select id="day"></select>
+  <select id="month"></select>
+  <select id="year"></select>
+</div>
+  <button onclick="checkDate()">Unlock the next page 💌</button>
+
+  <div id="message"></div>
+
+  <script>
+
+// Fill dropdowns
+window.onload = function () {
+
+  // Day
+  const day = document.getElementById("day");
+  day.innerHTML = `<option value="">Day</option>`;
+  for (let i = 1; i <= 31; i++) {
+    let d = i.toString().padStart(2, '0');
+    day.innerHTML += `<option value="${d}">${i}</option>`;
+  }
+
+  // Month
+  const month = document.getElementById("month");
+  month.innerHTML = `<option value="">Month</option>`;
+  for (let i = 1; i <= 12; i++) {
+    let m = i.toString().padStart(2, '0');
+    month.innerHTML += `<option value="${m}">${i}</option>`;
+  }
+
+  // Year
+  const year = document.getElementById("year");
+  year.innerHTML = `<option value="">Year</option>`;
+  for (let i = 2000; i <= 2030; i++) {
+    year.innerHTML += `<option value="${i}">${i}</option>`;
+  }
+};
+
+
+function checkDate() {
+  const d = document.getElementById("day").value;
+  const m = document.getElementById("month").value;
+  const y = document.getElementById("year").value;
+
+  if (!d || !m || !y) {
+    document.getElementById("message").innerHTML =
+      "❌ Please select full date ❤️";
+    return;
+  }
+
+  const enteredDate = `${y}-${m}-${d}`;
+  const correctDate = "2015-02-24"; // CHANGE THIS ❤️
+
+  if (enteredDate === correctDate) {
+    document.getElementById("message").innerHTML = `
+      🎉 You remembered! 🎉
+      <div class="marquee">
+        <span>💖 ✨ 🎊 💖 ✨ 🎊 💖 ✨ 🎊 💖 ✨ 🎊</span>
+      </div>
+    `;
+
+    createHearts();
+
+    setTimeout(function () {
+      window.location.href = "story.html";
+    }, 3500);
+  } else {
+    document.getElementById("message").innerHTML =
+      "❌ Not this one… try again cutie 😉";
+  }
+}
+
+function createHearts() {
+  for (let i = 0; i < 20; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 4000);
+  }
+}
+
+</script>
+
+</div>
+</body>
+</html>
+
